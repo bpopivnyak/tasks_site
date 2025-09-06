@@ -12,7 +12,7 @@ class Task(models.Model):
     status = models.CharField(max_length=20)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     published_at = models.DateTimeField(auto_now_add=True)
-    project = models.ForeignKey(Project)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

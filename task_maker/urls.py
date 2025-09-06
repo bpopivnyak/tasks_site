@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import TaskListView, TaskDetailView, TaskCreateView, TaskDeleteView, TaskEditView
+from .views import TaskListView, TaskDetailView, TaskCreateView
 
 urlpatterns = [
-    path('', TaskListView.as_view, name='task_list'),
-    path('', TaskDetailView.as_view, name='task_detail'),
-    path('', TaskCreateView.as_view, name='task_create'),
-    path('', TaskDeleteView.as_view, name='task_delete'),
-    path('', TaskEditView.as_view, name='task_edit')
+    path('', TaskListView.as_view(), name='task_list'),
+    path('d', TaskDetailView.as_view(), name='task_detail'),
+    path('task-create/', TaskCreateView.as_view(), name='task_create'),
+#    path('', TaskDeleteView.as_view, name='task_delete'),
+#    path('', TaskEditView.as_view, name='task_edit')
 ]
