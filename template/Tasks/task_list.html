@@ -4,7 +4,7 @@
     <h1>Aviable tasks</h1>
     {% for task in tasks %}
         <li class="list-group-item">
-            <a href="#">{{ task.title }}</a>
+            <a href="{% url 'task-detail' task.pk %}">{{ task.title }}</a>
             <span class="badge text-bg-primary">{{ task.status }}</span>
             <span class="badge text-bg-primary">{{ task.user }}</span>
         </li>
