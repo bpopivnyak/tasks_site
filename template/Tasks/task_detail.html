@@ -6,7 +6,8 @@
     <h3>{{ task.description }}</h3>
     <h2>Creator: <p>{{ task.user }}</p></h2>
     <h2>Status: <p>{{ task.status }}</p></h2>
-    <a href="{% url 'tasks:task-update' task:id %}" class="bth bth-warning">Редагувати</a>
-    <a href="{% url 'tasks:task-update' task:id %}" class="bth bth-danger">Редагувати</a>
+    <h2>DateTime: <p>{{ task.due_datetime }}</p></h2>
+    <a href="{% url 'task_edit' task.id %}" class="bth bth-warning">Редагувати</a>
+    <a href="{% url 'task_delete' task.id %}" class="bth bth-danger">Видалити</a>
 </div>
 {% endblock %}
