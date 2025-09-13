@@ -19,7 +19,7 @@ class TaskListView(ListView):
 class TaskDetailView(DetailView):
     model = Task
     template_name = "Tasks/task_detail.html"
-    context_object_name = 'tasks'
+    context_object_name = 'task'
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
@@ -33,14 +33,16 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 class TaskDeleteView(DeleteView):
     model = Task
-    template_name = "Task/task_delete"
+    template_name = "Tasks/task_delete"
     success_url = reverse_lazy('task_list')
+    context_object_name = 'task'
 
 class TaskEditView(UpdateView):
     model = Task
     template_name = "Tasks/task_edit"
     form_class = TaskForm
     success_url = reverse_lazy('task_list')
+    context_object_name = 'task'
 
 class TaskCompleteView(LoginRequiredMixin, UserIsOwnerMixin, View):
     def post(self, request):

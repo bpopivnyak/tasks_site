@@ -2,12 +2,16 @@
 
 {% block content %}
 <div class="container mt-3">
-    <h1>{{ task.title }}</h1>
-    <h3>{{ task.description }}</h3>
-    <h2>Creator: <p>{{ task.user }}</p></h2>
-    <h2>Status: <p>{{ task.status }}</p></h2>
-    <h2>DateTime: <p>{{ task.due_datetime }}</p></h2>
-    <a href="{% url 'task_edit' task.id %}" class="bth bth-warning">Редагувати</a>
-    <a href="{% url 'task_delete' task.id %}" class="bth bth-danger">Видалити</a>
+    <div class="card" style="width: 18rem;">
+  <div class="card-header">
+    {{ task.title }}
+    </div>
+  </div>
+    <a class="btn btn-secondary">{{ task.description }}</a>
+    <h2>Creator: <a class="badge text-bg-secondary">{{ task.user }}</a></h2>
+    <h6>Status: <a class="badge text-bg-secondary">{{ task.status }}</a></h6>
+    <h2>DateTime: <a class="badge text-bg-secondary">{{ task.due_datetime }}</a></h2>
+    <a href="{% url 'task_edit' task.id %}" class="badge text-bg-warning">Редагувати</a>
+    <a href="{% url 'task_delete' task.id %}" class="badge text-bg-danger">Видалити</a>
 </div>
 {% endblock %}
