@@ -8,6 +8,10 @@
             <span class="badge text-bg-primary">{{ task.status }}</span>
             <span class="badge text-bg-primary">{{ task.user }}</span>
         </li>
+        <form action="{% url 'tasks:task-complete' task:pk %}">
+            {% csrf_token %}
+            <button type="submit" class="badge text-bg-danger">Danger</button>
+        </form>
     {% empty %}
     <ul class="nav justify-content-center">
         <li class="nav-item">

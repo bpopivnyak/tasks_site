@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<div class="container mt-3">
     <h1>{{ task.title }}</h1>
     <h3>{{ task.description }}</h3>
     <h2>Creator: <p>{{ task.user }}</p></h2>
     <h2>Status: <p>{{ task.status }}</p></h2>
-    <h2>Project #<p>{{ project.id }}</p></h2>
-
+    <a href="{% url 'tasks:task-update' task:id %}" class="bth bth-warning">Редагувати</a>
+    <a href="{% url 'tasks:task-update' task:id %}" class="bth bth-danger">Редагувати</a>
+</div>
 {% endblock %}
