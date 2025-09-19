@@ -39,7 +39,7 @@ class TaskDeleteView(DeleteView):
 
 class TaskEditView(UpdateView):
     model = Task
-    template_name = "Tasks/task_edit"
+    template_name = "Task/task_edit"
     form_class = TaskForm
     success_url = reverse_lazy('task_list')
     context_object_name = 'task'
