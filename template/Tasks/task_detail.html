@@ -1,17 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-3">
-    <div class="card" style="width: 18rem;">
-  <div class="card-header">
-    {{ task.title }}
-    </div>
-  </div>
-    <a class="btn btn-secondary">{{ task.description }}</a>
+    <h1>{{ task.title }}</h1>
+    <h4>{{ task.description }}</h4>
     <h2>Creator: <a class="badge text-bg-secondary">{{ task.user }}</a></h2>
     <h6>Status: <a class="badge text-bg-secondary">{{ task.status }}</a></h6>
     <h2>DateTime: <a class="badge text-bg-secondary">{{ task.due_datetime }}</a></h2>
     <a href="{% url 'task_edit' task.id %}" class="badge text-bg-warning">Редагувати</a>
     <a href="{% url 'task_delete' task.id %}" class="badge text-bg-danger">Видалити</a>
-</div>
 {% endblock %}

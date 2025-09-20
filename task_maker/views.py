@@ -33,13 +33,13 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 class TaskDeleteView(DeleteView):
     model = Task
-    template_name = "Tasks/task_delete"
+    template_name = "Tasks/task_delete.html"
     success_url = reverse_lazy('task_list')
     context_object_name = 'task'
 
 class TaskEditView(UpdateView):
     model = Task
-    template_name = "Task/task_edit"
+    template_name = "Tasks/task_edit.html"
     form_class = TaskForm
     success_url = reverse_lazy('task_list')
     context_object_name = 'task'
@@ -49,7 +49,7 @@ class TaskCompleteView(LoginRequiredMixin, UserIsOwnerMixin, View):
         task = self.get_object()
         task.status = "done"
         task.save()
-        return HttpResponseRedirect (reverse_lazy("tasks:task_list"))
+        return HttpResponseRedirect (reverse_lazy("task_list"))
 
     def object(self):
         task_id = self.kwargs.get("pk")
