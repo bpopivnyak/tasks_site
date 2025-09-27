@@ -1,11 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load extra_tags %}
     <h1>{{ task.title }}</h1>
     <h4>{{ task.description }}</h4>
     <h2>Creator: <a class="badge text-bg-secondary">{{ task.user }}</a></h2>
     <h6>Status: <a class="badge text-bg-secondary">{{ task.status }}</a></h6>
     <h2>DateTime: <a class="badge text-bg-secondary">{{ task.due_datetime }}</a></h2>
-    <a href="{% url 'task_edit' task.id %}" class="badge text-bg-warning">Редагувати</a>
-    <a href="{% url 'task_delete' task.id %}" class="badge text-bg-danger">Видалити</a>
+    <a href="{% url 'task_edit' task.id %}" class="badge text-bg-warning">Edit</a>
+    <a href="{% url 'task_delete' task.id %}" class="badge text-bg-danger">Delete</a>
+
+<div class="comments mt-4">
+    <h3>Comments</h3>
+        {% for comment in task.comments.all %}
+            <div class="comment mb-2">
+                <p>{{ comment.content }}</p>
+                {% if comment.media %}
+                    <div class="comment-media">
+                        {% if comment.media.url|endswith:".jpg" or comment.media.url|endswith:".png" or comment.media.url|endswith:".jpeg" %}
+                            <img src="{{ comment.media.url }}" alt="Зображення коментаря" style="max-width: 1000px">
+                        {% elif comment.media.url|endswith:".mp4" %}
+                            <video width="320", height="240" controls>
+                                <source src="{{ comment.media.url }}" type="video/mp4">
+                                Your browser does not support the video tag
+                            </video>
+                        {% else %}
+                            <a href="{{ comment.media.url }}">Download this file</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <small>User: {{ comment.user.username }}</small>
+       {% empty %}
+                <p>No Comments :(</p>
+       {% endfor %}
+            </div>
+</div>
+
+<div class="add-comment mt-4">
+    <h4>Add comment</h4>
+    <form action="{% url 'task_detail' task.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit" class="btn btn-success">Post</button>
+    </form>
+</div>
+
 {% endblock %}

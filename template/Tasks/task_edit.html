@@ -3,12 +3,12 @@
 {% block content %}
 
 <div class="container">
-    <h2>Оновити завдання</h2>
+    <h2>Update task</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="badge text-bg-success">Редагувати</button>
-        <a href="{% url 'task_list' %}" class="badge text-bg-secondary">Назад до списку завдань</a>
+        <button type="submit" class="badge text-bg-success">Edit</button>
+        <a href="{% url 'task_list' %}" class="badge text-bg-secondary">Back</a>
     </form>
 </div>
 

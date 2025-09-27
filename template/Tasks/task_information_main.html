@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul class="nav justify-content-center">
+    <h1>Do tasks</h1>
+</ul>
+    {% for information in informations %}
+        <li class="list-group-item">
+            <div class="card" style="width: 22rem;">
+                <div class="alert alert-light" role="alert">
+                    <a href="{% url 'information_media' task.pk %}" class="alert-link">{{ information.title }}</a>
+                    <span class="badge text-bg-primary">{{ information.status }}</span>
+                </div>
+            </div>
+        </li>
+    </div>
+</ul>
+    {% empty %}
+        <li class="nav-item">
+    <h1>News not detected</h1>
+        </li>
+    {% endfor %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Tasks</h5>
+    <p class="card-text">Just do some task here.</p>
+    <a href="{% url 'task_list' %}" class="btn btn-primary">Go To Do</a>
+  </div>
+</div>
+
+{% endblock %}

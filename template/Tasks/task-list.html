@@ -2,7 +2,7 @@
 
 {% block content %}
 <ul class="nav justify-content-center">
-    <h1>Aviable tasks</h1>
+    <h1>Available tasks</h1>
 </ul>
     {% for task in tasks %}
         <li class="list-group-item">
@@ -13,7 +13,7 @@
                     <span class="badge text-bg-primary">{{ task.user }}</span>
                     <form action="{% url 'task_complete' task.pk %}">
                         {% csrf_token %}
-                        <button type="submit" class="badge text-bg-danger">Do this task</button>
+                        <button type="submit" class="badge text-bg-warning">Do this task</button>
                     </form>
                 </div>
             </div>
