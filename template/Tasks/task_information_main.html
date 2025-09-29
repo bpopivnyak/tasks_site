@@ -4,11 +4,11 @@
 <ul class="nav justify-content-center">
     <h1>Do tasks</h1>
 </ul>
-    {% for information in informations %}
+    {% for information in information %}
         <li class="list-group-item">
             <div class="card" style="width: 22rem;">
                 <div class="alert alert-light" role="alert">
-                    <a href="{% url 'information_media' task.pk %}" class="alert-link">{{ information.title }}</a>
+                    <a href="{% url 'information' task.pk %}" class="alert-link">{{ information.title }}</a>
                     <span class="badge text-bg-primary">{{ information.status }}</span>
                 </div>
             </div>
@@ -17,7 +17,7 @@
 </ul>
     {% empty %}
         <li class="nav-item">
-    <h1>News not detected</h1>
+    <h1>This site is temporarily down</h1>
         </li>
     {% endfor %}
 

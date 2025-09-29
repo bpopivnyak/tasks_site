@@ -19,7 +19,7 @@ class MainInformationView(ListView):
     template_name = "Tasks/task_information_main.html"
     context_object_name = 'tasks'
 
-class DetailInformationView(ListView):
+class DetailInformationView(DetailView):
     model = Information
     template_name = "Tasks/task_information.html"
     context_object_name = 'tasks'

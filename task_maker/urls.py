@@ -3,7 +3,7 @@ from .views import TaskListView, TaskDetailView, TaskCreateView, TaskCompleteVie
 
 urlpatterns = [
     path('', MainInformationView.as_view(), name='information_page'),
-    path('<int:pk>/', DetailInformationView.as_view(), name='information_media'),
+    path('<int:pk>/', DetailInformationView.as_view(), name='information'),
     path('task-list/', TaskListView.as_view(), name='task_list'),
     path('<int:pk>/detail/', TaskDetailView.as_view(), name='task_detail'),
     path('task-create/', TaskCreateView.as_view(), name='task_create'),
